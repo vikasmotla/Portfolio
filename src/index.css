@@ -10,6 +10,75 @@ body {
   /* overflow-y: hidden; */
 }
 
+
+html{
+  font-size: 10px;
+}
+
+
+
+
+/*
+@media (min-width:760px) {
+  .container{
+    display: flex;
+    align-items: flex-start;
+    align-items: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+  }
+  .container1{
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.container3{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container div, .container1 div, .container3 div{
+  border: 1px solid black;
+}
+
+.box1{
+  flex: 2;
+  order: 2;
+}
+
+.box2{
+  flex: 1;
+  order:1;
+}
+
+.box3{
+  flex: 2;
+  order:3;
+}
+
+
+
+.box11{
+  flex-basis: 27%;
+}
+
+.boxc3{
+  flex-basis: 25%;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
 html{
   margin: 0;
   padding: 0;

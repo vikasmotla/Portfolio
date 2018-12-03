@@ -1,0 +1,163 @@
+
+.Navbar {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  color: #fff;
+  font-family: 'Raleway-semibold';
+  animation: moveDown 0.5s;
+}
+
+.NavbarHidden{
+  display: none;
+}
+
+
+.Logo{
+  padding-top: 15px;
+  padding-left: 15px;
+  font-size: 18px;
+  flex:8;
+}
+
+.cursor:hover{
+  cursor: pointer;
+}
+
+.Item{
+  padding-top: 25px;
+  padding-bottom: 30px;
+  margin: 0px 15px;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  flex:1;
+}
+
+.Item:hover{
+  color: #E31B6D;
+  border-bottom: 2px solid #fff;
+}
+
+
+@keyframes moveDown {
+  0%{
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  70%{
+    opacity: 0.5;
+  }
+  100%{
+    transform: translatey(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateUp {
+  0%{
+    transform: rotate(0deg);
+    border-color: #fff;
+  }
+  100%{
+    transform: rotate(-40deg);
+    border-color: #E31B6D;
+  }
+}
+
+@keyframes rotateDown {
+  0%{
+    transform: rotate(0deg);
+    border-color: #fff;
+  }
+  100%{
+    transform: rotate(40deg);
+    border-color: #E31B6D;
+  }
+}
+
+@media (max-width:700px) {
+  .Item{
+    display: none;
+  }
+
+  .smallScreenMenu {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0;
+    background-color: black;
+    z-index: 2;
+  }
+
+  .animationForMenuTrue{
+    height: 50vh;
+    animation: heightInc 1s;
+  }
+
+  .animationForMenuFalse{
+    height: 0vh;
+    animation: heightDec 1s;
+  }
+
+  .animationForMenuTrue{
+    height: 50vh;
+    animation: heightInc 1s;
+  }
+
+  .menuIcon{
+    z-index: 3;
+    padding-top: 10px;
+    padding-right: 15px;
+    flex:1;
+  }
+
+  .menuLine1 , .menuLine , .menuLine2{
+    border-bottom: 2px solid #fff;
+    margin-top: 3px;
+    width: 20px;
+  }
+
+  .menuLine1Toggle{
+    border-color: #E31B6D;
+    animation: rotateUp 1s;
+    transform: rotate(-40deg);
+  }
+
+  .menuLine2Toggle{
+    border-color: #E31B6D;
+    animation: rotateDown 1s;
+    transform: rotate(40deg);
+  }
+
+  .menuLineToggle{
+    display: none;
+  }
+
+  .menuIcon:hover{
+    cursor: pointer;
+  }
+
+  @keyframes heightInc {
+    0%{
+      height: 0;
+    }
+    100%{
+      height: 50vh;
+    }
+  }
+
+  @keyframes heightDec {
+    0%{
+      height: 50vh;
+    }
+    100%{
+      height: 0;
+    }
+  }
+
+}

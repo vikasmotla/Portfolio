@@ -5,66 +5,93 @@ class Canvas extends Component {
   componentDidMount() {
     const canvas = this.refs.canvas
     // var canvas = document.getElementById('myCanvas')
-    var c = canvas.getContext("2d");
-    var w = window.innerWidth - 20;
-    var h = window.innerHeight - 20;
-
-    // var letters =
-    var color = ['lightgreen', 'red', 'white', 'cyan']
+    const c = canvas.getContext("2d");
+    const w = window.innerWidth - 20;
+    const h = window.innerHeight - 20;
     canvas.width = w;
     canvas.height = h;
+    const color = ['#FF3F8E', '#04C2C9', '#2E55C1']
 
-    var dotsArray3 = [];
-    document.addEventListener('mousedown', function(event) {
-      for (var i = 0; i < 50; i++) {
-        dotsArray3.push(new MainFun(event.x, event.y, Math.random() * 10 - 5, Math.random() * 10 - 5, null, null, 'cyan', 2, null, 1))
-      }
+    const dotsArray = [];
+
+    const mouse = {
+      mouseX: w / 2,
+      mouseY: h / 2
+    }
+    let cirRad, radSpeed, randX, randY;
+
+    window.addEventListener('mousemove', function(event) {
+      mouse.mouseX = event.x;
+      mouse.mouseY = event.y
     })
 
-    function MainFun(x, y, dx, dy, x1, y1, col, rad, indx, op) {
-      this.op = op
+    for (var i = 0, j = 0; i < 80; i++, j += 25) {
+       cirRad = Math.floor(Math.random() * 200) + 100
+       radSpeed = (0.001 / 100) * cirRad
+       randX = Math.floor(Math.random() * w) + 150
+       randY = Math.random() * h
+      dotsArray[i] = new MainFun(randX, randY, color[Math.floor(Math.random() * color.length)], 1.5, cirRad, radSpeed)
+    }
+
+    function MainFun(x, y, col, rad, cirRad, radSpeed) {
       this.x = x;
       this.y = y;
-      this.dx = dx;
-      this.dy = dy;
-
-
       this.col = col;
       this.rad = rad;
-      this.update3 = function() {
-        if (this.x > w || this.x < 0) {
-          dotsArray3.splice(dotsArray3.indexOf(this), 1);
-        } else {
-          this.x += this.dx
-          this.y += this.dy
-          this.draw3()
-        }
-      }
+      this.radians = 0;
+      this.cirRad = cirRad;
+      this.radSpeed = radSpeed;
+      this.op = 0.3;
+      this.lenY = 1200;
+      this.lenX = this.lenY / 2
 
-      this.draw3 = function() {
+      this.update = function() {
+        if (Math.abs(this.x - mouse.mouseX) < 50) {
+          this.op = 1;
+        } else {
+          this.op = 0.3;
+        }
+        this.radians += this.radSpeed
+        this.x = x + Math.cos(this.radians) * this.cirRad
+        this.y = y + Math.sin(this.radians) * this.cirRad
+        this.draw()
+      }
+      this.draw = function() {
         c.beginPath();
         c.arc(this.x, this.y, this.rad, 0, 2 * Math.PI);
         c.fillStyle = this.col;
-        c.globalAlpha = this.op;
         c.fill();
         c.closePath();
-      }
 
+        c.beginPath();
+        c.arc(this.x + this.lenX, this.y - this.lenY, this.rad, 0, 2 * Math.PI);
+        c.fillStyle = this.col;
+        c.fill();
+        c.closePath();
+
+        c.beginPath();
+        c.lineJoin = "round";
+        c.moveTo(this.x, this.y);
+        c.lineTo(this.x + this.lenX + 0.5, this.y - this.lenY + 0.5);
+        c.lineWidth = 0.2;
+        c.strokeStyle = "rgba(255,255,255," + this.op + ")"
+        c.stroke();
+      }
     }
 
     function animate() {
       requestAnimationFrame(animate)
       c.clearRect(0, 0, w, h)
-      for (var i = 0; i < dotsArray3.length; i++) {
-        dotsArray3[i].update3()
+      for (var i = 0; i < dotsArray.length; i++) {
+        dotsArray[i].update()
       }
     }
     animate()
   }
   render() {
-    return (
-      <canvas ref = 'canvas' > < /canvas>
-    );
+    return (<canvas ref='canvas'>
+      < /canvas>
+        );
   }
 }
 
