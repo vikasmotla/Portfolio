@@ -1,0 +1,130 @@
+
+.hireMe{
+  background-color: #1A1A1A;
+  display: flex;
+  position: relative;
+}
+
+.hireMe div{
+  flex: 20%;
+  height: 150vh;
+  border-right: 1px solid #000;
+}
+
+.hireMe h2{
+  position: absolute;
+  top:0px;
+  color:#fff;
+  opacity: 0.05;
+  font-size: 380px;
+  margin: 0px;
+  letter-spacing: 5px;
+  font-weight: 700;
+  padding-left: 20%;
+}
+
+.hireMe h4{
+  position: absolute;
+  top:0px;
+  color:#fff;
+  font-size: 80px;
+  margin: 0px;
+  letter-spacing: 5px;
+  font-weight: 700;
+  padding: 20% 20%;
+  /* font-family: 'Spectral SC', serif; */
+}
+
+.hireMe h4:after{
+  content: '';
+  border-bottom: 1px solid #fff;
+  display: block;
+}
+
+.hireMe h4 p {
+  cursor: pointer;
+  color: #E31B6D;
+}
+
+.social{
+  position: absolute;
+  bottom: 0px;
+  list-style: none;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.social li {
+  width: 150px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight:bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+
+.hireMe span {
+  width: 80px;
+  height: 80px;
+  border-radius: 30%;
+  border: 20px solid cyan;
+  background-color: #1A1A1A;
+}
+
+.hireMe span:nth-child(2n+1) {
+  position: absolute;
+  bottom: 120px;
+  right:50px;
+}
+
+.hireMe span:nth-child(2n+2) {
+  position: absolute;
+  top: 120px;
+  left:50px;
+}
+
+span:hover{
+  background-color: red;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .social li {
+    width: 60px;
+    font-size: 10px;
+  }
+
+  .hireMe div{
+      height: 120vh;
+  }
+
+  .hireMe h4{
+    font-size: 40px;
+    padding-right: 0;
+  }
+
+  .hireMe h2{
+    font-size: 120px;
+  }
+
+  .hireMe span{
+    width: 18px;
+    height: 18px;
+    border-radius: 30%;
+    border: 6px solid cyan;
+  }
+
+  .hireMe span:nth-child(2n+1) {
+    bottom: 140px;
+    right:10px;
+  }
+
+  .hireMe span:nth-child(2n+2) {
+    top: 50px;
+    left:10px;
+  }
+
+}
